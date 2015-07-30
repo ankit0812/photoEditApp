@@ -124,22 +124,27 @@ UIView *newView;
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
 }
 
     
-    
 
 
 -(IBAction)addText:(id)sender
 {
-    UITextField *tf= [[UITextField alloc] initWithFrame:CGRectMake(10, 30, 200, 40)];
+    
     newView = [[UIView alloc] initWithFrame:CGRectMake(10, 30, 200, 40)];
-   
-    tf.text=@"Enter Your Text here";
+    UITextField *tf= [[UITextField alloc] initWithFrame:CGRectMake(10, 30, 200, 40)];
+    tf.placeholder = @"enter text";
+    tf.autocorrectionType = UITextAutocorrectionTypeYes;
+    tf.keyboardType = UIKeyboardTypeDefault;
+    tf.returnKeyType = UIReturnKeyDone;
+    tf.clearButtonMode = UITextFieldViewModeWhileEditing;
+    tf.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [newView addSubview:tf];
+    
+     [self.bigImageView addSubview:newView];
     
     [_bigImageView addSubview:newView];
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveViewWithGestureRecognizer1:)];
